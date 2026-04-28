@@ -28,7 +28,8 @@ spec:
       status: ACTIVE
 
       formFactorProducts:
-        - FFPINXYZ100101
+        - FFPINXYZ100102
+        - FFPINXYZ100103
 
   viewConfig:
     angelosSchema:

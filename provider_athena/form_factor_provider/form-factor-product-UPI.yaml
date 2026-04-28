@@ -1,0 +1,38 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: Configuration
+
+metadata:
+  name: bankxyz.athena.configuration.product.prdin001001.card2.form-factor-product
+
+spec:
+  metadata:
+    id: athena.configuration.product.prdin001001.card2.form-factor-product
+    name: bankxyz Card Form Factor Product 01
+    description: bankxyz Card Form Factor Product 01
+    tenantId: '600001'
+    tenantCode: bankxyz
+
+  config:
+    format: YAML
+    schemaUrl: http://localhost
+    schemaInlineContent: |
+      {"properties":{"code":{"type":"string"},"description":{"type":"string"},"issuanceStatus":{"enum":["ACTIVE","INACTIVE"]},"name":{"type":"string"},"paymentStatus":{"enum":["ACTIVE","INACTIVE"]},"provider":{"enum":["CMS","WMS","WCMS","TTMS","UIDMS","PMS","PCMS","UPIMS","PKMS","DIDMS"]},"skuID":{"type":"string"},"tags":{"items":{"type":"string"},"type":"array"},"type":{"enum":["card","wallet","walletCard","tethysToken","uniqueId","phoneNumber","proxyCard","vpa","public_key","device"]}},"required":["code","name","description","type","provider","issuanceStatus","paymentStatus"],"type":"object"}
+    key: key
+    isEncrypted: false
+    useVault: false
+
+    value:
+      code: FFPINXYZ100103
+      description: bankxyz UPI Form Factor Product
+      name: bankxyz UPI Form Factor Product
+      type: vpa
+      provider: UPIMS
+      issuanceStatus: ACTIVE
+      paymentStatus: ACTIVE
+      skuID: SKUINXYZ100101
+
+  viewConfig:
+    angelosSchema:
+      view:
+        entityId: angelos.athena.form-factor-product
+    displayName: bankxyz UPI Form Factor Product
