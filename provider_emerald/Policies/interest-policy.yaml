@@ -1,0 +1,48 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: EmeraldInterestPolicy
+metadata:
+  name: bankxyz.emerald.emeraldinterestpolicy.8001
+spec:
+  metadata:
+    id: emerald.emeraldinterestpolicy.8001
+    name: Emerald Interest Policy
+    description: Emerald Interest Policy
+    requester:
+      module: emerald-module-e2e
+      moduleVersion: 0.0.1
+    tenantId: '6001001'
+    tenantCode: bankxyz
+  name: Emerald Interest Policy
+  code: EIPINXYZ8001
+  description: Emerald Interest Policy
+  validFrom: '2010-03-06T00:00:00.000-07:00'
+  validTill: '2099-12-31T00:00:00.000-07:00'
+  creditEffectiveFrom: ValueDate
+  debitEffectiveFrom: ValueDate
+  interestAccrual:
+    accountLevelRate: true
+    dayCountMethods:
+      - lifeCycleEvent: firstInstallment
+        dayCountMethod: ACTUAL/360
+      - lifeCycleEvent: preClosure
+        dayCountMethod: ACTUAL/360
+      - lifeCycleEvent: reAmortization
+        dayCountMethod: 30/360G
+      - lifeCycleEvent: default
+        dayCountMethod: 30/360G
+    roundingRule: NEAR
+    dayCountMethod: null
+  interestLiquidation:
+    liquidationVoucherCode: LOAN_INTEREST_LIQUIDATION
+  interestRules:
+    - balanceType: DAILY_BALANCE
+      description: Normal Interest Base
+      interestComponent: NORMAL_INTEREST_BASE
+      liquidation:
+        model: BillUnconditional
+        postingCategories:
+          accrualPostingCategory: ACCRUEDINTERESTNORMAL
+          billingPostingCategory: NORMALINTEREST
+          penaltyPostingCategory: PENALTYINTERESTBASE
+      postingCategory: NORMALINTERESTBASE
+  templateCode: in-credit

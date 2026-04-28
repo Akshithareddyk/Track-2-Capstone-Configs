@@ -1,0 +1,27 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: Configuration
+
+metadata:
+  name: bankxyz.ruby.configuration.product.prdus001001.default.account-product-family
+
+spec:
+  metadata:
+    id: ruby.configuration.product.prdus001001.default.account-product-family
+    name: bankxyz Account Product Family 1001
+    description: bankxyz Account Product Family 1001
+    tenantId: '600001'
+    tenantCode: bankxyz
+
+  config:
+    format: YAML
+    schemaUrl: https://banking-assets.s3.ap-south-1.amazonaws.com/hedwig/product_configuration_schema/provider_ruby/account_product_family/v1/schema.yaml
+    key: key
+    isEncrypted: false
+    useVault: false
+
+    value:
+      name: bankxyz Account Product Family 1001
+      code: APFINXYZ1001
+      description: bankxyz Account Product Family 1001
+      coaCode: COAINXYZ1001
+      parentCoaNodeCode: COAINXYZ1001_Node_Revolving_Credit

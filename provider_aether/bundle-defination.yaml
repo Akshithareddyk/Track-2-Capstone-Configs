@@ -1,0 +1,61 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: Configuration
+metadata:
+  name: bankxyz.aether.configuration.product.prdus001001.default.bundle-definition
+
+spec:
+  metadata:
+    id: aether.configuration.product.prdus001001.default.bundle-definition
+    name: bankxyz Bundle 1001
+    description: bankxyz Bundle 1001
+    tenantId: '600001'
+    tenantCode: bankxyz
+
+  config:
+    format: YAML
+    schemaUrl: https://banking-assets.s3.ap-south-1.amazonaws.com/hedwig/product_configuration_schema/provider_bundle/bundle_definition/v1/schema.yaml
+    key: key
+    isEncrypted: false
+    useVault: false
+
+    value:
+      name: bankxyz Bundle 1001
+      code: BUNINXYZ1001
+      description: Bundle consists of subprime credit account, payment account, credit card and emerald loan product.
+      picURL: https://card-program-files.s3.amazonaws.com/partnergiftcard.png
+
+      activationPolicy: false
+      aliasProductIdMap: {}
+      issueInactiveCard: true
+      applySpendLimits: true
+      receiverPolicy: false
+
+      defaultEmailLabel: "Customer Email"
+      defaultPhoneLabel: "Customer Phone"
+      isEmailMandatory: false
+      isPhoneMandatory: false
+
+      productBundleBlueprintCode: PBBINXYZ1001
+      bundleStatusPolicyCode: BSPINXYZ1001
+
+      productMappings:
+        accountProduct:
+          productFamilyCode: APFINXYZ1001
+          productCode: RAPINXYZ1001
+          serviceProvider: RUBY
+
+        paymentProduct:
+          productFamilyCode: PPFINXYZ1001
+          productCode: PYPINXYZ1001
+
+        paymentAccountProduct:
+          productCode: PPDINXYZ1001
+          productFamilyCode: PPDINXYZ1001
+        
+        notificationProduct:
+          description: Notification product for credit bundles
+          productCode: NOTIFIINXYZ1001
+          productName: Credit Notification Product bankxyz
+          receiverType: ACCOUNT_HOLDER
+          serviceProvider: LUMINOS
+          tenantId: '600001'

@@ -1,0 +1,37 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: Configuration
+
+metadata:
+  name: bankxyz.athena.configuration.product.prdus001001.default.resource-product
+
+spec:
+  metadata:
+    id: athena.configuration.product.PRDUS001001.default.resource-product
+    name: default Resource Product for PRDUSXEE1001
+    description: default Resource Product for PRDUSXEE1001
+    tenantId: '600001'
+    tenantCode: bankxyz
+
+  config:
+    format: YAML
+    schemaUrl: http://localhost
+    schemaInlineContent: |
+      {"properties":{"code":{"type":"string"},"description":{"type":"string"},"formFactorProducts":{"items":{"type":"string"},"type":"array"},"name":{"type":"string"},"status":{"enum":["ACTIVE","INACTIVE"]},"tags":{"items":{"type":"string"},"type":"array"}},"required":["code","name","description","status"],"type":"object"}
+    key: key
+    isEncrypted: false
+    useVault: false
+
+    value:
+      code: RSPINXYZ1001
+      description: bankxyz Resource Product
+      name: bankxyz Resource Product
+      status: ACTIVE
+
+      formFactorProducts:
+        - FFPINXYZ100101
+
+  viewConfig:
+    angelosSchema:
+      view:
+        entityId: angelos.athena.resource-product
+    displayName: bankxyz Resource Product

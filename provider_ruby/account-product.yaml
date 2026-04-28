@@ -1,0 +1,125 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: Configuration
+
+metadata:
+  name: bankxyz.ruby.configuration.product.prdus001001.default.account-product
+
+spec:
+  metadata:
+    id: ruby.configuration.product.prdus001001.default.account-product
+    name: bankxyz Account Product 1001
+    description: bankxyz Subprime Account Product
+    tenantId: '600326'
+    tenantCode: bankxyz
+
+  config:
+    format: YAML
+    schemaUrl: https://banking-assets.s3.ap-south-1.amazonaws.com/hedwig/product_configuration_schema/provider_ruby/account_product_family/account_product/v1/product.yaml
+    key: key
+    isEncrypted: false
+    useVault: false
+
+    value:
+      name: bankxyz Account Product 1001
+      code: RAPINXYZ1001
+      coaCode: COAUSXEE1001
+      accountProductFamilyCode: APFINXYZ1001
+      description: bankxyz Subprime Credit Account Product
+
+      policies:
+
+        creditAllocationPolicy:
+          code: CROINXYZ1001
+          version: 2
+
+        chargeOffDecisionPolicy:
+          code: CODINXYZ1001
+          version: 5
+
+        accountClosurePolicy:
+          code: ACPINXYZ1001
+          version: 2
+
+        accountNumberGenerationPolicy:
+          code: ANGINXYZ1001
+          version: 4
+
+        feePolicies:
+          disputeProcessingPolicy:
+            code: DPPINXYZ1001
+            version: 5
+          annualFee:
+            code: ANFINXYZ1001
+            version: 5
+          joiningFee:
+            code: JFFINXYZ1001
+            version: 4
+          cardReplacementFee:
+            code: CRFINXYZ1001
+            version: 3
+          cashAdvanceFee:
+            code: CAFINXYZ1001
+            version: 34
+          forexFee:
+            code: FCFINXYZ1001
+            version: 32
+          forexAdvanceFee:
+            code: FCCINXYZ1001
+            version: 26
+          lateFee:
+            code: LPFINXYZ1001
+            version: 42
+          minInterestFee:
+            code: MIFINXYZ1001
+            version: 19
+
+        interestTermResolutionPolicy:
+          code: TRPINXYZ1001
+          version: 3
+
+        delinquencyPolicy:
+          code: DLQINXYZ1001
+          version: 7
+
+        dormancyPolicy:
+          code: DORINXYZ1001
+          version: 2
+
+        interestPolicy:
+          code: INTINXYZ1001
+          version: 18
+
+        madPolicy:
+          code: MADINXYZ1001
+          version: 18
+
+        repaymentPolicy:
+          code: REPINXYZ1001
+          version: 4
+
+        statementPolicy:
+          code: STMINXYZ1001
+          version: 22
+
+        spendLimitPolicy:
+          code: SPLINXYZ1001
+          version: 2
+
+      channelCodes:
+        - CHNINZZ1101
+
+      programs:
+
+        - code: IPGUSXEE100101
+          type: General
+          precedenceCode: '900'
+          validFrom: '2023-01-01T00:00:00.000Z'
+          validTill: '9999-01-01T00:00:00.000Z'
+
+        - code: AFPP00003XEE
+          type: AnualFee Waiver
+          precedenceCode: '200'
+          validFrom: '2025-01-01T00:00:00.000Z'
+          validTill: '9999-01-01T00:00:00.000Z'
+
+      templateCode: in-credit

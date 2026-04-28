@@ -1,0 +1,32 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: EmeraldRepaymentPolicy
+metadata:
+  name: lsg.emerald.emeraldrepaymentpolicy.8001
+spec:
+  metadata:
+    id: emerald.emeraldrepaymentpolicy.8001
+    name: Emerald Repayment Policy
+    description: Emerald Repayment Policy
+    requester:
+      module: emerald-module-e2e
+      moduleVersion: 0.0.1
+    tenantId: '6001001'
+    tenantCode: bankxyz
+  validFrom: '2023-01-01T00:00:00.000-07:00'
+  validTill: '2099-12-31T00:00:00.000-07:00'
+  name: Emerald Repayment Policy
+  description: Emerald Repayment Policy
+  code: ERPINXYZ1001
+  longestOverDue: false
+  minAmountForPartialPayOff: 500
+  minInstallmentsForPartialPayOff: 0
+  numberOfRetriesForAutoRepayment: 5
+  excessPaymentCategory: 'null'
+  partialPayOffAllowed: true
+  repaymentMode: AUTO
+  repaymentSequence:
+    - settlementPriority:
+        - FEES
+        - INTEREST
+        - PRINCIPAL
+  templateCode: in-credit

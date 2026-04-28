@@ -1,0 +1,78 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: RubyInterestTermResolutionPolicy
+metadata:
+  name: lsg.ruby.interesttermresolutionpolicy.3001
+spec:
+  code: TRPUS003001
+  description: Interest term resolution policy
+  metadata:
+    description: 3001 interest term resolution policy
+    id: ruby.interesttermresolutionpolicy.3001
+    name: 3001 interest term resolution policy
+    requester:
+      module: ruby-module-e2e
+      moduleVersion: 0.0.1
+    tenantCode: lsg
+    tenantId: '600309'
+  configs:
+    - selectionCriteria:
+        accountStatus:
+          - '*'
+        postingFilters:
+          - '*'
+      couponRepricingConfig:
+        - programType: GENERAL
+          repricingAction: DONT_REPRICE
+        - programType: PROMOTION
+          repricingAction: DONT_REPRICE
+        - programType: BALANCE_TRANSFER
+          repricingAction: DONT_REPRICE
+        - programType: DELINQUENCY
+          repricingAction: DONT_REPRICE
+        - programType: HARDSHIP
+          repricingAction: DONT_REPRICE
+          repricingStrategy:
+            preferenceWithinProgramType: PRECEDENCE
+            eligibleProgramTypes:
+              - HARDSHIP
+              - DELINQUENCY
+              - PROMOTION
+              - GENERAL
+              - BALANCE_TRANSFER
+            flags:
+              shouldResolveCurrentTerm: false
+              shouldRecursivelyResolvePreviousAppliedTerms: true
+      couponExpiryConfig:
+        - programType: GENERAL
+          repricingAction: DONT_REPRICE
+        - programType: PROMOTION
+          repricingAction: DONT_REPRICE
+        - programType: BALANCE_TRANSFER
+          repricingAction: DONT_REPRICE
+        - programType: DELINQUENCY
+          repricingAction: DONT_REPRICE
+        - programType: HARDSHIP
+          repricingAction: DONT_REPRICE
+          repricingStrategy:
+            preferenceWithinProgramType: PRECEDENCE
+            eligibleProgramTypes:
+              - HARDSHIP
+              - DELINQUENCY
+              - PROMOTION
+              - GENERAL
+              - BALANCE_TRANSFER
+            flags:
+              shouldResolveCurrentTerm: false
+              shouldRecursivelyResolvePreviousAppliedTerms: true
+      couponNewIssuanceConfig:
+        - preferenceWithinProgramType: PRECEDENCE
+          eligibleProgramTypes:
+            - HARDSHIP
+            - DELINQUENCY
+            - PROMOTION
+            - GENERAL
+            - BALANCE_TRANSFER
+  name: interest term resolution policy
+  templateCode: us-credit
+  validFrom: '2000-01-01T23:09:01.795+07:00'
+  validTill: '2999-01-01T23:09:01.795+07:00'

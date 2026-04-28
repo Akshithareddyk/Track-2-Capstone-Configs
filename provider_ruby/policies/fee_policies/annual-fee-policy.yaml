@@ -1,0 +1,22 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: RubyAnnualFeePolicy
+metadata:
+  name: bankxyz.ruby.rubyannualfeeepolicy.product.1001
+spec:
+  metadata:
+    id: ruby.rubyannualfeeepolicy.product.1001
+    name: bankxyz Annual Fee Policy
+    description: Annual Fee Policy for Subprime Products
+    tenantId: '600001'
+    tenantCode: bankxyz
+  name: bankxyz Annual Fee Policy
+  code: ANFINXYZ1001
+  description: Annual Fee - 499 INR for active accounts
+  modelParameters:
+    fixedAmount:
+      baseFee:
+        amount: 499
+        currency: INR
+  validFrom: '2023-01-01T00:00:00.000-07:00'
+  validTill: '2099-12-31T00:00:00.000-07:00'
+  templateCode: us-credit

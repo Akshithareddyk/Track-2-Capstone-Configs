@@ -1,0 +1,84 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: RubyStatementPolicy
+
+metadata:
+  name: bankxyz.ruby.rubystatementpolicy.1001
+
+spec:
+  metadata:
+    id: ruby.rubystatementpolicy.1001
+    name: bankxyz Statement Policy
+    description: bankxyz Statement Policy
+
+    requester:
+      module: ruby-module-e2e
+      moduleVersion: 0.0.1
+      tenantId: '600001'
+      tenantCode: bankxyz
+
+  validFrom: '2023-01-01T00:00:00.000-07:00'
+  validTill: '9999-01-01T00:00:00.000-07:00'
+
+  name: bankxyz Statement Policy
+  description: Subprime Statement Policy
+  code: STMINXYZ1001
+
+  physicalStatementThreshold: '0'
+  graceDays: 3
+
+  payByHolidayTreatment: retainHoliday
+  dueDaysCalculationMethod: FixedDueDate
+
+  allowedStatementCycles:
+    - billingCycle: CYCIN00100102
+      dueDate: 1
+    - billingCycle: CYCIN00100103
+      dueDate: 15
+    - billingCycle: CYCIN00100104
+      dueDate: 28
+
+  password: function password(context) { return 'password' }
+
+  statementTemplateCode: https://hercules-assets.internal/statement/digital.html,https://hercules-assets.internal/statement/mail.html
+
+  applyLateFeesOn: GRACE_DATE
+  valueDateOfLateFees: DUE_DATE
+
+  ytdSummaryEnabled: true
+  ytdSummaryStartDate: 1
+  ytdSummaryStartMonth: 1
+
+  isProbableLateFeeEnabled: true
+  isSchumerBoxEnabled: true
+  schumerMonthsToRepay: 36
+
+  isInterestBreakupEnabled: true
+
+  metaData:
+    digitalPdfUrlExpiresInDays: '0'
+    digitalPdfUrlExpiresInHours: '0'
+    digitalPdfUrlExpiresInMinutes: '15'
+
+  skipStatementRules: |
+    function skipStatementRules(context) {
+      if (context.totalClosingBalance == '0' && context.isPostingAvailable == 'false') {
+        return true;
+      }
+      return false;
+    }
+
+  forceStatementGenerationRules: |
+    function forceStatementGenerationRules(context) {
+      return false;
+    }
+
+  yearlyCycle: CYCIN00100129
+
+  billingCycleChangeConfig:
+    coolOffDaysBetweenBillingCycleChange: 180
+
+  rules:
+    - maxLimit: 1
+      period: YEARLY
+
+  templateCode: in-credit

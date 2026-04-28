@@ -1,0 +1,36 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: Configuration
+
+metadata:
+  name: bankxyz.elenchos.configuration.product.prdus001001.default.product
+
+spec:
+  metadata:
+    id: elenchos.configuration.product.prdus001001.default.product
+    name: bankxyz Product 1001
+    description: bankxyz Product 1001
+    tenantId: '600001'
+    tenantCode: bankxyz
+
+  config:
+    format: YAML
+    schemaUrl: https://card-program-files.s3.amazonaws.com/schema/product_bundle.yaml
+    key: key
+    isEncrypted: false
+    useVault: false
+
+    value:
+      name: bankxyz Product 1001
+      code: PRDUSXEE1001
+      codeSuffix: '1001'
+      description: bankxyz Subprime Credit Card Product
+
+      imageUrl: https://card-program-files.s3.amazonaws.com/optimawebviews-bucket/Starbucks_1.jpg
+      status: active
+
+      source:
+        clonedFrom: Template
+        clonedProduct: PRDINXYZ1001
+
+      hedwig:
+        sheetUrl: https://docs.google.com/spreadsheets/d/1RQ4EBKkpmXm9LRroag7kYebIccR5moL9LKWkEkUZm5Y/edit#gid=1948516709

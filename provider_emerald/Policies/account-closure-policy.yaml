@@ -1,0 +1,26 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: EmeraldClosurePolicy
+metadata:
+  name: lsg.emerald.emeraldclosurepolicy.5001
+spec:
+  metadata:
+    id: emerald.emeraldclosurepolicy.5001
+    name: Emerald Closure Policy
+    description: Emerald Closure Policy
+    requester:
+      module: emerald-module-e2e
+      moduleVersion: 0.0.1
+    tenantId: '6001001'
+    tenantCode: bankxyz
+  validFrom: '2023-01-01T00:00:00.000-07:00'
+  validTill: '2099-12-31T00:00:00.000-07:00'
+  name: EMI CLOSURE Policy
+  description: Credit Card EMI CLOSURE Policy
+  code: ECPINXYZ1001
+  allowCancellation: true
+  coolingPeriodForCancellation: 20
+  allowPreClosure: true
+  preClosureLockIn: 0
+  autoPreClosureThresholdPercentage: 89.99
+  includeCatchUpInterest: true
+  templateCode: in-credit

@@ -1,0 +1,31 @@
+kind: RubySpendLimitPolicy
+apiVersion: rrsd.zetaapps.in/v1alpha1
+metadata:
+  name: bankxyz.ruby.rubyspendlimitpolicy.module.7001
+  labels:
+    rrsd.zetaapps.in/day: day-zero
+  annotations:
+    zeta.tech/resource-tags: '{"gitDbRepo":"tenant_configuration.aws-default-pp-mumbai.bankxyz","gitDbPath":"https://gitea.internal.mum1-pp.zetaapps.in/zetaengg/tenant_configuration.aws-default-pp-mumbai.bankxyz.git","filePath":"module_configurations/module_ruby/spend-limit-policies/ruby-spend-limit-policy_7001.yaml","tenantCode":"bankxyz"}'
+  namespace: ruby
+spec:
+  metadata:
+    id: ruby.rubyspendlimitpolicy.module.7001
+    name: ruby.rubyspendlimitpolicy.module.7001
+    description: ruby.rubyspendlimitpolicy.module.7001
+    tenantId: '600001'
+    tenantCode: bankxyz
+  validFrom: '2023-01-01T00:00:00.000-07:00'
+  validTill: '2099-12-31T00:00:00.000-07:00'
+  name: Spend Limit Policy 2001
+  description: Spend Limit Policy 2001
+  code: SPLINXYZ7001
+  coaCode: COAINXYZ7001
+  disabledForNewCards:
+    - DOMESTIC_ECOM
+    - DOMESTIC_CONTACTLESS
+    - INTERNATIONAL_POS
+    - INTERNATIONAL_ECOM
+    - INTERNATIONAL_ATM
+    - INTERNATIONAL_CONTACTLESS
+  defaultLimitsForNewCards: []
+  templateCode: in-credit

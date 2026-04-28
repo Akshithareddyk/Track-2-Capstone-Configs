@@ -1,0 +1,35 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: RubyLateFeePolicy
+metadata:
+  name: bankxyz.ruby.rubylatefeepolicy.1001
+spec:
+  metadata:
+    id: ruby.rubylatefeepolicy.1001
+    name: 1001 Ruby Late Fee Policy
+    description: 1001 Ruby Late Fee Policy
+    requester:
+      module: ruby-module-e2e
+      moduleVersion: 0.0.1
+    tenantId: '600001'
+    tenantCode: bankxyz
+  name: Ruby Late Fee Policy
+  code: LPFINXYZ1001
+  description: Ruby Late Fee Policy
+  modelParameters:
+    amountType: FIXED
+    repeatedOccurrence:
+      maxAmount: 750.0
+      baseAmount: 750.0
+    firstOccurenceAmount:
+      maxAmount: 500.0
+      baseAmount: 500.0
+    repeatOccurrenceWindow:
+      type: CYCLES
+      count: '6'
+    considerReversedInstances: false
+    balanceNotSubjectedToThisFee:
+      - LateFeeUnbilled
+  precedenceCode: ZZ0025
+  validFrom: '2023-01-01T00:00:00.000-07:00'
+  validTill: '2099-12-31T00:00:00.000-07:00'
+  templateCode: in-credit

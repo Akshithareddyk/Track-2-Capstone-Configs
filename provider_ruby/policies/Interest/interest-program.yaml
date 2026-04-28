@@ -1,0 +1,124 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: Configuration
+
+metadata:
+  name: bankxyz.ruby.configuration.module.general-1001.interest-program
+
+spec:
+  metadata:
+    id: ruby.configuration.module.general-1001.interest-program
+    name: bankxyz General Interest Program
+    description: bankxyz Subprime Interest Program
+    tenantId: '600326'
+    tenantCode: bankxyz
+
+  config:
+    format: YAML
+    schemaUrl: http://localhost
+    schemaInlineContent: |
+      {"properties":{"amountTiers":{"items":{"properties":{"fromAmount":{"type":"number"},"tenureTier":{"items":{"properties":{"fromTenure":{"properties":{"days":{"type":"number"},"months":{"type":"number"},"years":{"type":"number"}},"type":"object"},"interestRate":{"type":"number"},"toTenure":{"properties":{"days":{"type":"number"},"months":{"type":"number"},"years":{"type":"number"}},"type":"object"}},"type":"object"},"type":"array"},"toAmount":{"type":"number"}},"type":"object"},"type":"array"},"currency":{"type":"string"},"description":{"type":"string"},"name":{"type":"string"},"rateSpecificationCode":{"type":"string"},"status":{"type":"string"},"validFrom":{"type":"string"},"validTill":{"type":"string"}},"type":"object"}
+    key: key
+    isEncrypted: false
+    useVault: false
+
+    value:
+      name: bankxyz General Interest Program
+      code: IPGINXYZ100101
+      description: Co-branded Interest Program
+
+      type: General
+      rateType: VARIABLE
+      precedenceCode: '900'
+
+      validFrom: '2023-01-01T00:00:00.000-07:00'
+      validUntil: '2999-01-01T00:00:00.000-07:00'
+
+      interestRules:
+
+        - applicableTo:
+            maxValueThreshold: 999999999999
+            minValueThreshold: 0
+          postingCategories:
+            - RetailPrincipalUnbilled
+            - RetailInterestUnbilled
+            - AnnualFeeUnbilled
+            - LateFeeUnbilled
+            - OverlimitFeeUnbilled
+
+          transactionSelectionCriterion: function evaluate(ruleContext) {return true;}
+
+          benefitValidUntilType: OPEN
+
+          modelParameters:
+            gracePeriodType: POLICY
+            margin: 36.00
+
+          rateTableCode: VARPRIMEXYZ1001
+          rateTableVersion: 1
+
+          precedenceCode: 100
+          ruleId: RULE01
+
+        - applicableTo:
+            maxValueThreshold: 9999999999
+            minValueThreshold: 0
+          postingCategories:
+            - CashPrincipalUnbilled
+            - CashInterestUnbilled
+            - CashAdvanceFeeUnbilled
+
+          transactionSelectionCriterion: function evaluate(ruleContext) {return true;}
+
+          benefitValidUntilType: OPEN
+
+          modelParameters:
+            gracePeriod: 0
+            gracePeriodType: ABSOLUTE
+            margin: 45.0
+
+          rateTableCode: VARPRIMEXYZ1001  
+          rateTableVersion: 1
+
+          precedenceCode: 110
+          ruleId: RULE02
+
+        - applicableTo:
+            maxValueThreshold: 9999999999
+            minValueThreshold: 0
+          postingCategories:
+            - ExcessPayment
+            - PendingAllocation
+
+          transactionSelectionCriterion: function evaluate(ruleContext) {return true;}
+
+          modelParameters:
+            margin: 0
+
+          rateTableCode: ZERO_RATE_CODE
+          rateTableVersion: 1
+
+          precedenceCode: 90
+          ruleId: RULE03
+
+        - applicableTo:
+            maxValueThreshold: 999999999999
+            minValueThreshold: 0
+          postingCategories:
+            - AnnualFeeUnbilled
+
+          transactionSelectionCriterion: function evaluate(ruleContext) {return true;}
+
+          benefitValidUntilType: OPEN
+
+          modelParameters:
+            gracePeriodType: POLICY
+            margin: 0
+
+          rateTableCode: ZERO_RATE_CODE
+          rateTableVersion: 1
+
+          precedenceCode: 105
+          ruleId: RULE04
+
+  viewConfig:
+    displayName: bankxyz-interest-program

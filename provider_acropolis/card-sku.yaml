@@ -1,0 +1,55 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: Configuration
+
+metadata:
+  name: bankxyz.acropolis.configuration.product.prdus001001.53401687-02.card-sku
+
+spec:
+  metadata:
+    id: acropolis.configuration.product.prdus001001.53401687-02.card-sku
+    name: Card SKU For bankxyz Bin 53401687 Range 02
+    description: Card SKU For bankxyz Bin 53401687 Range 02
+    tenantId: '600001'
+    tenantCode: bankxyz
+
+  config:
+    format: YAML
+    schemaUrl: http://localhost
+    schemaInlineContent: |
+      {"properties":{"bin":{"type":"string"},"code":{"type":"string"},"fileAttributes":{"properties":{"bankIdentifier":{"type":"string"}},"type":"object"},"plasticCode":{"type":"string"},"productCode":{"type":"string"},"range":{"type":"string"},"reservoirConfig":{"properties":{"inventory.size":{"type":"number"},"refilling.rate":{"type":"number"}},"type":"object"},"vendorIDs":{"items":{"type":"string"},"type":"array"}},"type":"object"}
+    key: key
+    isEncrypted: false
+    useVault: false
+
+    value:
+      batchCode: bankxyz Daily Batch
+      code: SKUINXYZ100101
+
+      fileAttributes:
+        bankIdentifier: bankxyz
+
+      plasticCode: BXEE01
+      productCode: CRPINXYZ100101
+
+      reservoirConfig:
+        inventory.size: 30000
+        refilling.rate: 3000
+
+      vendorIDs:
+        - VENINXYZ1001
+
+      schemaConfig:
+        - entityType: CARD_REQUEST
+          schemaInfo:
+            schemaCode: CR_SC001
+
+      fileGroupingConfig:
+        fileGroupingTemplate:
+          format: '%s_%s'
+          header: cardSkuID,vendorID
+
+  viewConfig:
+    angelosSchema:
+      view:
+        entityId: angelos.acropolis.card-sku
+    displayName: bankxyz Card SKU

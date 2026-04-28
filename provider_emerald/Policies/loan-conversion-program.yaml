@@ -1,0 +1,173 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: Configuration
+metadata:
+  name: lsg.emerald.configuration.program.general5002.loan-conversion-program
+spec:
+  config:
+    format: YAML
+    isEncrypted: false
+    key: key
+    schemaInlineContent: '{  "$schema": "http://json-schema.org/draft-04/schema#",  "type": "object",  "properties": {    "name": {      "type": "string"    },    "lienMarkedDebitPosting": {      "type": "boolean"    },    "directed": {      "type": "boolean"    },    "voucherCodes": {      "type": "array",      "items": [        {          "type": "string"        },        {          "type": "string"        },        {          "type": "string"        },        {          "type": "string"        },        {          "type": "string"        }      ]    },    "description": {      "type": "string"    },    "precedenceCode": {      "type": "string"    },    "code": {      "type": "string"    },    "accountStatus": {      "type": "array",      "items": [        {          "type": "object",          "properties": {            "name": {              "type": "string"            },            "status": {              "type": "string"            },            "finalChargeOffDate": {              "type": "string"            },            "type": {              "type": "string"            },            "reasonCode": {              "type": "string"            },            "tagTypeCode": {              "type": "string"            }          },          "required": [            "name",            "status",            "finalChargeOffDate",            "type",            "reasonCode",            "tagTypeCode"          ]        },        {          "type": "object",          "properties": {            "name": {              "type": "string"            },            "status": {              "type": "string"            },            "finalChargeOffDate": {              "type": "string"            },            "type": {              "type": "string"            },            "reasonCode": {              "type": "string"            },            "tagTypeCode": {              "type": "string"            }          },          "required": [            "name",            "status",            "finalChargeOffDate",            "type",            "reasonCode",            "tagTypeCode"          ]        }      ]    },    "validUntil": {      "type": "string"    },    "validFrom": {      "type": "string"    },    "status": {      "type": "string"    },    "billed": {      "type": "boolean"    },    "isBookDateGreaterThanLastStatementDatePlusXDays": {      "type": "boolean"    },    "daysAfterLastStatementDate": {      "type": "integer"    }  },  "required": [    "name",    "lienMarkedDebitPosting",    "directed",    "voucherCodes",    "description",    "precedenceCode",    "code",    "accountStatus",    "validUntil",    "validFrom",    "status"  ]}'
+    schemaUrl: http://localhost
+    useVault: false
+    value:
+      programCode: ELCPROGUS005002
+      precedenceCode: '100'
+      validFrom: '2023-01-01T00:00:00.000Z'
+      validUntil: '9999-01-01T00:00:00.000Z'
+      loanConversionDetails:
+        loanType: smartEMI
+        loanName: Smart loan
+        loanProductID: ''
+        loanProductCode: null
+        description: This is a standard smart loan
+      loanConversionRules:
+        - ruleId: RULE01
+          precedenceCode: 100
+          applicabilityCriteria:
+            accountEligibilityRules:
+              scriptRule:
+                ruleType: JAVASCRIPT
+                value: function ELCPROGUS005002_RULE01(ruleContext) {return true;}
+              declarativeRules:
+                - ruleType: DECLARATIVE
+                  property: statementBalancePayoffStatus
+                  allowedValues:
+                    - transactor
+                  deniedValues: []
+            transactionEligibilityRules:
+              scriptRule:
+                ruleType: JAVASCRIPT
+                value: function ELCPROGUS005002_RULE01(ruleContext) {return true;}
+              declarativeRules:
+                - ruleType: DECLARATIVE
+                  property: numberOfDaysForTransactionConversion
+                  allowedValues: []
+                  deniedValues: []
+                  maxVal: 7
+                  minVal: 0
+                - ruleType: DECLARATIVE
+                  property: transactionAmount
+                  allowedValues: []
+                  deniedValues: []
+                  maxVal: 5000
+                  minVal: 200
+                - ruleType: DECLARATIVE
+                  property: merchantCategoryCode
+                  allowedValues: []
+                  deniedValues: []
+          epiParam:
+            interest: 20
+            loanTenure: null
+            coolingPeriodDurationUnit: MINUTES
+            coolingPeriod: 0
+            loanRepaymentType: INSTALLMENTS
+            noOfInstallments: 3
+            firstInstallmentDateParams:
+              referenceDate: BILLING_DATE
+              firstInstallmentTenureType: ATMOST_LOAN_TERM
+              addOnDays: 1
+            installmentFrequency: MONTHLY
+        - ruleId: RULE02
+          precedenceCode: 100
+          applicabilityCriteria:
+            accountEligibilityRules:
+              scriptRule:
+                ruleType: JAVASCRIPT
+                value: function ELCPROGUS005002_RULE01(ruleContext) {return true;}
+              declarativeRules:
+                - ruleType: DECLARATIVE
+                  property: statementBalancePayoffStatus
+                  allowedValues:
+                    - transactor
+                  deniedValues: []
+            transactionEligibilityRules:
+              scriptRule:
+                ruleType: JAVASCRIPT
+                value: function ELCPROGUS005002_RULE01(ruleContext) {return true;}
+              declarativeRules:
+                - ruleType: DECLARATIVE
+                  property: numberOfDaysForTransactionConversion
+                  allowedValues: []
+                  deniedValues: []
+                  maxVal: 7
+                  minVal: 0
+                - ruleType: DECLARATIVE
+                  property: transactionAmount
+                  allowedValues: []
+                  deniedValues: []
+                  maxVal: 8000
+                  minVal: 200
+                - ruleType: DECLARATIVE
+                  property: merchantCategoryCode
+                  allowedValues: []
+                  deniedValues: []
+          epiParam:
+            interest: 24
+            loanTenure: null
+            coolingPeriodDurationUnit: MINUTES
+            coolingPeriod: 0
+            loanRepaymentType: INSTALLMENTS
+            noOfInstallments: 6
+            firstInstallmentDateParams:
+              referenceDate: BILLING_DATE
+              firstInstallmentTenureType: EXACT_LOAN_TERM
+              addOnDays: 0
+            installmentFrequency: MONTHLY
+        - ruleId: RULE03
+          precedenceCode: 100
+          applicabilityCriteria:
+            accountEligibilityRules:
+              scriptRule:
+                ruleType: JAVASCRIPT
+                value: function ELCPROGUS005002_RULE01(ruleContext) {return true;}
+              declarativeRules:
+                - ruleType: DECLARATIVE
+                  property: statementBalancePayoffStatus
+                  allowedValues:
+                    - transactor
+                  deniedValues: []
+            transactionEligibilityRules:
+              scriptRule:
+                ruleType: JAVASCRIPT
+                value: function ELCPROGUS005002_RULE01(ruleContext) {return true;}
+              declarativeRules:
+                - ruleType: DECLARATIVE
+                  property: numberOfDaysForTransactionConversion
+                  allowedValues: []
+                  deniedValues: []
+                  maxVal: 7
+                  minVal: 0
+                - ruleType: DECLARATIVE
+                  property: transactionAmount
+                  allowedValues: []
+                  deniedValues: []
+                  maxVal: 10000
+                  minVal: 200
+                - ruleType: DECLARATIVE
+                  property: merchantCategoryCode
+                  allowedValues: []
+                  deniedValues: []
+          epiParam:
+            interest: 28
+            loanTenure: null
+            coolingPeriodDurationUnit: MINUTES
+            coolingPeriod: 0
+            loanRepaymentType: INSTALLMENTS
+            noOfInstallments: 12
+            firstInstallmentDateParams:
+              referenceDate: BILLING_DATE
+              firstInstallmentTenureType: EXACT_LOAN_TERM
+              addOnDays: 0
+            installmentFrequency: MONTHLY
+  metadata:
+    description: Loan conversion program
+    id: emerald.configuration.program.general5002.loan-conversion-program
+    name: Loan Conversion Program
+    tenantCode: bankxyz
+    tenantId: '600001'
+  viewConfig:
+    angelosSchema:
+      view:
+        entityId: angelos.emerald.loan-conversion-program
+    displayName: Loan Conversion Program

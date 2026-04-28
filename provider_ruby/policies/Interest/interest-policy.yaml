@@ -1,0 +1,76 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: RubyInterestPolicy
+
+metadata:
+  name: bankxyz.ruby.rubyinterestpolicy.1001
+
+spec:
+  metadata:
+    id: ruby.rubyinterestpolicy.1001
+    name: bankxyz Interest Policies
+    description: bankxyz Subprime Interest Policy
+
+    requester:
+      module: ruby-module-e2e
+      moduleVersion: 0.0.1
+      tenantId: '600326'
+      tenantCode: bankxyz
+
+  validFrom: '2023-01-01T00:00:00.000-07:00'
+  validTill: '9999-01-01T00:00:00.000-07:00'
+
+  name: bankxyz Interest Policy
+  description: Subprime Interest Policy
+  code: INTUSXEE1001
+
+  assessmentParameters:
+    computationType: DAILYBALANCEWITHMONTHLYCOMPOUNDING
+
+  liquidationParameters:
+    ratificationStrategy: IMMEDIATE
+    aggregationStrategy:
+      fixed:
+        - ProgramType
+        - BalanceType
+        - RateType
+        - InterestRate
+        - TermsValidityDate
+      variable:
+        - ProgramType
+        - BalanceType
+        - RateType
+        - IndexRateSpecCode
+        - Margin
+        - TermsValidityDate
+
+  interestThreshold: 50
+
+  roundingRule: NEAR
+  roundingUnit: '2'
+  dayCountMethod: ACTUAL/ACTUAL
+
+  gracePeriodApplicableOnInterest: false
+  payOffVariance: 0
+
+  paymentPostingCategory: rePayments
+  applyMinimumInterestFee: true 
+
+  debitEffectiveFrom: ValueDate
+
+  liquidationModels:
+
+    - unBilled: DeferCurrentIfOpenBalPaidElseBillCurrent
+      billed: WaiveDeferredAndWaiveCurrentIfOpenBalPaidElseBillDeferredAndBillCurrent
+      balanceType: retail
+      defaultRateCard:
+        code: VARPRIMEXYZ1001
+        interestProgramCode: IPGUSXYZ100101
+
+    - unBilled: BillUnconditional
+      billed: BillUnconditional
+      balanceType: cash
+      defaultRateCard:
+        code: VARPRIMEXYZ1001
+        interestProgramCode: IPGUSXYZ100101
+
+  templateCode: in-credit

@@ -1,0 +1,30 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: RubyMinimumInterestFeePolicy
+
+metadata:
+  name: bankxyz.ruby.rubyminimuminterestfeepolicy.1001
+
+spec:
+  metadata:
+    id: ruby.rubyminimuminterestfeepolicy.default
+    name: bankxyz Minimum Interest Fee Policy
+    description: bankxyz Minimum Interest Fee Policy
+
+    requester:
+      module: ruby-module-e2e
+      moduleVersion: 0.0.1
+      tenantId: '600001'
+      tenantCode: bankxyz
+
+  name: bankxyz Minimum Interest Fee Policy
+  code: MIFINXYZ1001
+  description:  Minimum Interest Fee Policy
+
+  modelParameters:
+    fixedAmount:
+      baseFee: 89
+
+  validFrom: '2023-01-01T00:00:00.000-07:00'
+  validTill: '2099-12-31T00:00:00.000-07:00'
+
+  templateCode: in-credit

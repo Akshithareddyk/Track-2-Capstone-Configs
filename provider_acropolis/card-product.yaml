@@ -1,0 +1,78 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: Configuration
+
+metadata:
+  name: bankxyz.acropolis.configuration.product.prdus001001.601150-23.card-product
+
+spec:
+  metadata:
+    id: acropolis.configuration.product.prdus001001.601150-23.card-product
+    name: bankxyz Card Product For Bin 601150 Range 23
+    description: bankxyz Card Product For Bin 601150 Range 23
+    tenantId: '600001'
+    tenantCode: bankxyz
+
+  config:
+    format: YAML
+    schemaUrl: http://localhost
+    schemaInlineContent: |
+      {"properties":{"bin":{"type":"string"},"cardActivationPolicy":{"items":{"properties":{"digital.activation.type":{"enum":["MANUAL","AUTO_ACTIVATION"],"type":"string"},"enabled":{"type":"boolean"},"physical.activation.type":{"enum":["MANUAL","AUTO_ACTIVATION"],"type":"string"}},"type":"object"},"type":"array"},"cardReissuancePolicy":{"items":{"properties":{"enabled":{"type":"boolean"},"overrideAllowed":{"type":"boolean"},"policyType":{"enum":["ACTIVATE_ON_ISSUANCE","TERMINATE_SOURCE_CARD","SWAP_PIN_FROM_SOURCE_CARD","SWAP_TOKENS_FROM_SOURCE_CARD"],"type":"string"}},"type":"object"},"type":"array"},"cardRenewalPolicy":{"items":{"properties":{"enabled":{"type":"boolean"},"overrideAllowed":{"type":"boolean"},"policyType":{"enum":["ACTIVATE_ON_ISSUANCE","TERMINATE_SOURCE_CARD","SWAP_PIN_FROM_SOURCE_CARD","SWAP_TOKENS_FROM_SOURCE_CARD"],"type":"string"}},"type":"object"},"type":"array"},"cardReplacementPolicy":{"items":{"properties":{"enabled":{"type":"boolean"},"overrideAllowed":{"type":"boolean"},"policyType":{"enum":["ACTIVATE_ON_ISSUANCE","TERMINATE_SOURCE_CARD","SWAP_TOKENS_FROM_SOURCE_CARD"],"type":"string"}},"type":"object"},"type":"array"},"code":{"type":"string"},"description":{"type":"string"},"expiry":{"properties":{"month":{"type":"number"},"year":{"type":"number"}},"type":"object"},"features":{"items":{"enum":["EMV","MAG_STRIPE","NFC"],"type":"string"},"type":"array"},"name":{"type":"string"},"range":{"type":"string"}},"type":"object"}
+    key: key
+    isEncrypted: false
+    useVault: false
+
+    value:
+      code: CRPINXYZ100101
+      description: bankxyz Card Product For Bin 601150 Range 23
+      name: bankxyz Card Product
+      status: ENABLED
+
+      binRangeSelectionStrategy: CHRONOLOGICAL
+
+      binRanges:
+        - bin: '652345'
+          range: '23'
+
+      expiry:
+        month: 1
+        year: 4
+
+      features:
+        - MAG_STRIPE
+        - EMV
+        - NFC
+
+      cardActivationPolicy:
+        - digital.activation.type: AUTO_ACTIVATION
+          physical.activation.type: MANUAL
+          enabled: true
+
+      cardReissuancePolicy:
+        - enabled: true
+          overrideAllowed: true
+          policyType: TERMINATE_SOURCE_CARD
+
+      cardRenewalPolicy:
+        - enabled: true
+          overrideAllowed: false
+          policyType: SWAP_PIN_FROM_SOURCE_CARD
+
+      cardReplacementPolicy:
+        - enabled: true
+          overrideAllowed: false
+          policyType: TERMINATE_SOURCE_CARD
+
+      acsProviderConfig:
+        enrollmentConfigs:
+          - enrollmentType: CARD_ENROLLMENT
+            enrollmentCredentials:
+              - EMAIL
+              - PHONE_NUMBER
+        enabled: true
+        domainID: 600001.acs
+
+  viewConfig:
+    angelosSchema:
+      view:
+        entityId: angelos.acropolis.card-product
+    displayName: bankxyz Card Product

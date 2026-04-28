@@ -1,0 +1,87 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: Configuration
+
+metadata:
+  name: bankxyz.emerald.configuration.product.prdus001001.default-ap.account-product
+  labels:
+    rrsd.zetaapps.in/day: day-one
+
+spec:
+  metadata:
+    id: emerald.configuration.product.prdus001001.default-ap.account-product
+    name: bankxyz-default-ap
+    description: bankxyz Emerald Account Product
+
+    requester:
+      module: emerald
+      moduleVersion: 0.0.1
+
+    tenantId: '600326'
+    tenantCode: bankxyz
+
+  config:
+    format: YAML
+    schemaUrl: http://localhost
+    schemaInlineContent: |
+      {"properties":{"attributes":{"type":"object"},"code":{"type":"string"},"description":{"type":"string"},"name":{"type":"string"},"policies":{"type":"object"},"productPreferences":{"type":"object"},"vboId":{"type":"string"}},"type":"object"}
+
+    key: key
+    isEncrypted: false
+    useVault: false
+
+    value:
+      attributes:
+        segment: subprime
+
+      code: EAPINXYZ1001
+      name: bankxyz Emerald Account Product
+      description: Subprime Loan-backed Credit Account
+
+      policies:
+        accountClosurePolicy:
+          code: ACPINXYZ1001
+          version: 1
+
+        accountNumberGenerationPolicy:
+          code: ANGINXYZ1001
+          version: 1
+
+        amortizationPolicy:
+          code: AMOINXYZ1001
+          version: 1
+
+        interestPolicy:
+          code: INTINXYZ1001
+          version: 1
+
+        repaymentPolicy:
+          code: REPINXYZ1001
+          version: 1
+
+      productPreferences:
+
+        issuanceStartDate: '2023-01-01T00:00:00.000-07:00'
+        issuanceEndDate: '2099-12-31T00:00:00.000-07:00'
+
+        minLoanAmount:
+          amount: 500
+          currency: IN
+
+        maxLoanAmount:
+          amount: 10000
+          currency: IN
+
+        minTenure:
+          months: 3
+
+        maxTenure:
+          months: 12
+
+        defaultTenure:
+          months: 3
+
+      vboId: bankxyz
+
+  viewConfig:
+    angelosSchema:
+      view: {}

@@ -1,0 +1,31 @@
+kind: FeePromoProgram
+apiVersion: rrsd.zetaapps.in/v1alpha1
+metadata:
+  name: bankxyz.ruby.feepromoprogram.product.annualfee-waiveoff-spend
+  labels:
+    rrsd.zetaapps.in/day: day-zero
+  annotations:
+    zeta.tech/resource-tags: '{"gitDbRepo":"product_configurations","productCode":"PRDUSXEE1001","provider":"ruby","filePath":"product_configurations/product_PRDUSXEE1001/provider_ruby/fee_promo_programs/fee-promo-program_annual-fee-waiveoff-spend.yaml","tenantCode":"bankxyz"}'
+spec:
+  metadata:
+    id: ruby.feepromoprogram.product.annualfee-waiveoff-spend
+    name: bankxyz Annual Fee Waive-off on Spend
+    description: Waives Annual Fee when spend criteria met
+    tenantId: '600001'
+    tenantCode: bankxyz
+  programCode: AFPP00003XEE
+  precedenceCode: '65'
+  name: Annual Fee Waive-off Program
+  description: Annual Fee Waive-off - 0 for active spenders
+  validFrom: 1672531200000
+  validUntil: 19904067200000
+  promotions:
+    - chargeSpecificationCode: CHSINXYZ0021
+      chargeDescription: Annual Fee Waive-off
+      modelParams:
+        fixedAmount:
+          baseFee:
+            amount: 0
+            currency: INR
+  tags:
+    - tag://bundleSegment/Seg1?tagTypeCode=classification

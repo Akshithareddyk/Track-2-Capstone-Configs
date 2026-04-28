@@ -1,0 +1,51 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: TransactionPolicy
+metadata:
+  name: lsg.aura.configuration.transaction-policy-velocity-limit-policy.3002
+  labels:
+    rrsd.zetaapps.in/day: day-zero
+  annotations:
+    zeta.tech/resource-tags: '{"gitDbRepo":"tenant_configuration.aws-default-pp-mumbai.lsg","gitDbPath":"https://gitea.internal.mum1-pp.zetaapps.in/zetaengg/tenant_configuration.aws-default-pp-mumbai.lsg.git","filePath":"module_configurations/module_athena/transactions-policies/transaction-policy_transaction-policies-velocity-limit-policy.yaml","tenantCode":"lsg"}'
+spec:
+  metadata:
+    id: aura.transaction-policy.velocity-limit-policy.3002
+    name: TransactionPolicy 3002
+    description: TransactionPolicy 3002
+    requester:
+      module: aura-module
+      moduleVersion: 0.0.1
+    tenantId: '600001'
+    tenantCode: bankxyz
+  code: TPOIN00300208
+  description: velocity limit policy for transaction restriction 1009
+  coaCode: COAUS003002
+  policyScope: EACH_ACCOUNT_OF_ACCOUNT_HOLDER
+  effectiveFrom: '2005-03-24T11:54:14.000Z'
+  expiresAt: '2026-03-24T11:54:14.000Z'
+  violationAction: DECLINE_AND_NOTIFY
+  accountsApplicableTo:
+    - key: value
+  attributes: {
+    }
+  aggregateRules:
+    - action: DEBIT
+      transactionCategoryCode: ECOM_TXN_CODE_PS
+      aggExpressionCode: '6'
+      errorCode: DAILY_TXN_COUNT_LIMIT_VIOLATED
+      type: VELOCITY
+      cycleURI: CALENDAR_YEAR_DAILY_219912189340754819
+      maxLimit: 10
+    - action: DEBIT
+      transactionCategoryCode: POS_TXN_CODE_PS
+      aggExpressionCode: '6'
+      errorCode: DAILY_TXN_COUNT_LIMIT_VIOLATED
+      type: VELOCITY
+      cycleURI: CALENDAR_YEAR_DAILY_219912189340754819
+      maxLimit: 10
+    - action: DEBIT
+      transactionCategoryCode: CASH_TXN_CODE_PS
+      aggExpressionCode: '6'
+      errorCode: DAILY_TXN_COUNT_LIMIT_VIOLATED
+      type: VELOCITY
+      cycleURI: CALENDAR_YEAR_DAILY_219912189340754819
+      maxLimit: 2

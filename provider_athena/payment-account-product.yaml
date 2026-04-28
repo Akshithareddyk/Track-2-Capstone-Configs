@@ -1,0 +1,37 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: Configuration
+
+metadata:
+  name: bankxyz.athena.configuration.product.prdin001001.default.payment-account-product
+
+spec:
+  metadata:
+    id: athena.configuration.product.prdin001001.default.payment-account-product
+    name: Payment Account Product for PRDINXYZ1001
+    description: Payment Account Product for PRDINXYZ1001
+    tenantId: '600001'
+    tenantCode: bankxyz
+
+  config:
+    format: YAML
+    schemaUrl: http://localhost
+    schemaInlineContent: |
+      {"properties":{"code":{"type":"string"},"description":{"type":"string"},"name":{"type":"string"},"resourceProductCode":{"type":"string"},"status":{"enum":["ACTIVE","INACTIVE"]},"tags":{"items":{"type":"string"},"type":"array"},"walletProductCode":{"type":"string"}},"required":["code","name","description","resourceProductCode","status"],"type":"object"}
+    key: key
+    isEncrypted: false
+    useVault: false
+
+    value:
+      code: PPDINXYZ1001
+      name: bankxyz Credit Card Payment Account Product
+      description: bankxyz Credit Card Payment Account Product
+      type: CREDIT_CARD
+      status: ACTIVE
+      baseCurrency: INR
+      paymentAccountProviderCode: PAPINXYZ1001
+
+  viewConfig:
+    angelosSchema:
+      view:
+        entityId: angelos.athena.payment-product
+    displayName: bankxyz Payment Account Product

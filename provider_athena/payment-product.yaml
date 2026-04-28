@@ -1,0 +1,64 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: Configuration
+
+metadata:
+  name: bankxyz.athena.configuration.product.prdus001001.default.payment-product
+
+spec:
+  metadata:
+    id: athena.configuration.product.prdus001001.default.payment-product
+    name: default Payment Product for PRDUSXEE1001
+    description: default Payment Product for PRDUSXEE1001
+    tenantId: '600001'
+    tenantCode: bankxyz
+
+  config:
+    format: YAML
+    schemaUrl: http://localhost
+    schemaInlineContent: |
+      {"properties":{"code":{"type":"string"},"description":{"type":"string"},"name":{"type":"string"},"resourceProductCode":{"type":"string"},"status":{"enum":["ACTIVE","INACTIVE"]},"tags":{"items":{"type":"string"},"type":"array"},"walletProductCode":{"type":"string"}},"required":["code","name","description","resourceProductCode","status"],"type":"object"}
+    key: key
+    isEncrypted: false
+    useVault: false
+
+    value:
+      code: PYPINXYZ1001
+      description: bankxyz Payment Product
+      name: bankxyz Payment Product
+      resourceProductCode: RSPINXYZ1001
+      status: ACTIVE
+
+      channelCodePaymentCodeMapping:
+        - channelCode: CHNINZZ1101
+          paymentCodes:
+            - PMCINZZ110121103
+            - PMCINZZ110120103
+            - PMCINZZ110101503
+            - PMCINZZ110100503
+            - PMCINZZ110101034
+            - PMCINZZ110100034
+            - PMCINZZ110111034
+            - PMCINZZ110110034
+            - PMCINZZ110110035
+            - PMCINZZ110111035
+            - PMCINZZ110101004
+            - PMCINZZ110100004
+            - PMCINZZ110101005
+            - PMCINZZ110101058
+            - PMCINZZ110100058
+            - PMCINZZ110100013
+            - PMCINZZ110101013
+            - PMCINZZ110131042
+            - PMCINZZ110130042
+            - PMCINZZ110130043
+            - PMCINZZ110131043
+            - PMCINZZ110130100
+            - PMCINZZ110131100
+            - PMCINZZ110130101
+            - PMCINZZ110131101
+
+  viewConfig:
+    angelosSchema:
+      view:
+        entityId: angelos.athena.payment-product
+    displayName: bankxyz Payment Product

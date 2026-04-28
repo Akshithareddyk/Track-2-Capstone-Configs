@@ -1,0 +1,42 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: RubyForexMarkupFeePolicy
+metadata:
+  name: bankxyz.ruby.rubyforexmarkupfeepolicy.1011
+spec:
+  metadata:
+    id: ruby.rubyforexmarkupfeepolicy.1011
+    name: 1011 Forex Markup Fee Policy
+    description: 1011 Forex Markup Fee Policy
+    requester:
+      module: ruby-module-e2e
+      moduleVersion: 0.0.1
+    tenantId: '600326'
+    tenantCode: bankxyz
+  name: Forex Markup Fee Policy
+  code: FCFUSXEE1001
+  description: Forex Markup Fee Policy
+  modelParameters:
+    variableAmount:
+      - domestic: 'true'
+        crossCurrency: 'false'
+        range:
+          min: 0.0
+        percentage: 0.0
+      - domestic: 'true'
+        crossCurrency: 'true'
+        range:
+          min: 0.0
+        percentage: 2.5
+      - domestic: 'false'
+        crossCurrency: 'true'
+        range:
+          min: 0.0
+        percentage: 3.0
+      - domestic: 'false'
+        crossCurrency: 'false'
+        range:
+          min: 0.0
+        percentage: 1.5
+  validFrom: '2025-07-25T23:09:01.795Z'
+  validTill: '2099-07-25T23:09:01.795Z'
+  templateCode: us-credit

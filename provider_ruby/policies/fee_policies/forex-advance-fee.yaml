@@ -1,0 +1,42 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: RubyForexMarkupAdvanceFeePolicy
+metadata:
+  name: bankxyz.ruby.rubyforexmarkupadvancefeepolicy.1011
+spec:
+  metadata:
+    id: ruby.rubyforexmarkupadvancefeepolicy.1011
+    name: 1011 Ruby Forex Markup Advance Fee Policy
+    description: 1011 Ruby Forex Markup Advance Fee Policy
+    requester:
+      module: ruby-module-e2e
+      moduleVersion: 0.0.1
+    tenantId: '600001'
+    tenantCode: bankxyz
+  name: 1011 Ruby Forex Markup Advance Fee Policy
+  code: FCCINXYZ1001
+  description: 1011 Ruby Forex Markup Advance Fee Policy
+  modelParameters:
+    variableAmount:
+      - domestic: 'true'
+        crossCurrency: 'false'
+        range:
+          min: 0.0
+        percentage: 0.0
+      - domestic: 'true'
+        crossCurrency: 'true'
+        range:
+          min: 0.0
+        percentage: 7.5
+      - domestic: 'false'
+        crossCurrency: 'true'
+        range:
+          min: 0.0
+        percentage: 8.5
+      - domestic: 'false'
+        crossCurrency: 'false'
+        range:
+          min: 0.0
+        percentage: 6.5
+  validFrom: '2023-01-01T00:00:00.000-07:00'
+  validTill: '2099-12-31T00:00:00.000-07:00'
+  templateCode: in-credit

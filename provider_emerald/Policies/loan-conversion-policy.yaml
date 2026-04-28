@@ -1,0 +1,60 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: EmeraldLoanConversionPolicy
+metadata:
+  name: lsg.emerald.emeraldloanconversionpolicy.8005
+spec:
+  metadata:
+    id: emerald.emeraldloanconversionpolicy.8005
+    name: 8005 Emerald Loan Conversion Policy
+    description: 8005 Emerald Loan Conversion Policy
+    requester:
+      module: emerald-module-e2e
+      moduleVersion: 0.0.1
+    tenantId: '600326'
+    tenantCode: bankxyz
+  validFrom: '2023-01-01T00:00:00.000Z'
+  validTill: '9999-01-01T00:00:00.000Z'
+  name: Emerald Loan Conversion Policy
+  description: Emerald Loan Conversion Policy
+  code: ELCUS008005
+  accountProvider: ruby
+  allowedLoanTypes:
+    - autoRefundProcessing: true
+      creditEffectiveDateForLoanConversion: loanConversionValueDate
+      loanValueDate: LOAN_BOOKING_DATE
+      loanName: Merchant EMI loan
+      loanProductID: ''
+      loanType: merchantEMI
+      processingFeeReversalOnLoanCancellation: true
+    - autoRefundProcessing: true
+      creditEffectiveDateForLoanConversion: loanConversionValueDate
+      loanName: Smart EMI loan
+      loanProductID: ''
+      loanType: smartEMI
+      processingFeeReversalOnLoanCancellation: true
+  bundleStatusValuesForAutoPreClosure:
+    autoBundleStatusValues:
+      - Z1
+      - Z2
+    manualBundleStatusValues:
+      - C1
+      - C2
+      - C3
+      - C4
+      - D1
+      - E1
+      - E2
+      - E3
+      - E4
+      - E5
+      - E6
+      - F1
+      - W1
+      - X1
+  daysPastDueForAutoPreClosure: 145
+  installmentBillingDays: 1
+  installmentDateRule:
+    addOnDays: 1
+    mode: BILLING_DATE
+  periodForLoanCancellationOnRefund: 0
+  templateCode: us-credit

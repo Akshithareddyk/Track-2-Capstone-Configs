@@ -1,0 +1,29 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: RubyCardReplacementFeePolicy
+metadata:
+  name: bankxyz.ruby.rubycardreplacementfeepolicy.1011
+spec:
+  metadata:
+    id: ruby.rubycardreplacementfeepolicy.1011
+    name: 1011 Ruby Card Replacement Fee Policy
+    description: 1011 Ruby Card Replacement Fee Policy
+    requester:
+      module: ruby-module-e2e
+      moduleVersion: 0.0.1
+    tenantId: '600001'
+    tenantCode: bankxyz
+  name: Ruby Card Replacement Fee Policy
+  code: CRFINXYZ1001
+  description: Ruby Card Replacement Fee Policy
+  modelParameters:
+    fixedAmount:
+      baseFee:
+        amount: 300
+        currency: INR
+    replacementCardIdentifier:
+      - key: cardSkuID
+        value:
+          - SKUINXYZ100101
+  validFrom: '2023-01-01T00:00:00.000-07:00'
+  validTill: '2099-12-31T00:00:00.000-07:00'
+  templateCode: in-credit

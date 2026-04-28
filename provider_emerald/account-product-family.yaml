@@ -1,0 +1,38 @@
+kind: Configuration
+apiVersion: rrsd.zetaapps.in/v1alpha1
+metadata:
+  name: bankxyz.emerald.configuration.product.7295.default-apf.account-product-family
+  labels:
+    rrsd.zetaapps.in/day: day-one
+  annotations:
+    zeta.tech/resource-tags: '{"gitDbRepo":"tenant_configuration.aws-default-pp-mumbai.bankxyz","gitDbPath":"https://gitea.internal.mum1-pp.zetaapps.in/zetaengg/tenant_configuration.aws-default-pp-mumbai.bankxyz.git","filePath":"/.defaults/product_configurations/provider_emerald/tree/root/t0/product_configurations/product_PRDUXEE7295/provider_emerald/account-product-familes/account-product-family-default-apf.yaml","tenantCode":"bankxyz"}'
+spec:
+  metadata:
+    id: emerald.configuration.product.7295.default-apf.account-product-family
+    name: default-apf
+    description: default-apf Account Product Family for 7295
+    requester:
+      module: emerald
+      moduleVersion: 0.0.1
+    tenantId: '600326'
+    tenantCode: bankxyz
+  config:
+    format: YAML
+    schemaUrl: http://localhost
+    schemaInlineContent: |
+      {"properties":{"attributes":{"type":"object"},"coaCode":{"type":"string"},"code":{"type":"string"},"description":{"type":"string"},"name":{"type":"string"},"parentCoaNodeCode":{"type":"string"}},"type":"object"}
+    key: key
+    isEncrypted: false
+    useVault: false
+    value:
+      attributes:
+        key1: value1
+      coaCode: COACODE
+      code: EPFINXYZ7295
+      description: Product family for loans
+      name: Revolving Credit 7295
+      parentCoaNodeCode: COANODECODE
+  viewConfig:
+    angelosSchema:
+      view: {
+        }

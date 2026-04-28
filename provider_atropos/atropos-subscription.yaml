@@ -1,0 +1,85 @@
+apiVersion: rrsd.zetaapps.in/v1alpha1
+kind: AtroposSubscription
+
+metadata:
+  name: bankxyz.orcus-module.atropossubscription.product.prdus001001.card-nrt-switch-authorization-event-1001
+  labels:
+    rrsd.zetaapps.in/day: day-one
+
+spec:
+  metadata:
+    id: orcus-module.atropossubscription.product.prdus001001.card-nrt-switch-authorization-event-1001
+    name: cardNRT-switch-authorization-event
+    description: cardNRT-switch-authorization-event
+
+    requester:
+      module: orcus-module
+      moduleVersion: 0.0.1
+      tenantId: '600001'
+      tenantCode: bankxyz
+
+  subscriptionType: webhook
+  state: ACTIVE
+
+  subscription:
+    subscriptionID: _orcus_code_interceptor_featurespace_switch_authorization_600001_RESOURCE
+    subscriber: photon-orcus
+    topic: _tenant_600001_RESOURCE
+    eventName: '*'
+
+    transformerJS: |
+      function transform(payload, sender) {
+
+        var resourceProductId = payload.data.payerInfo && payload.data.payerInfo.resourceProductID;
+
+        var allowedResourceProductIds = ['RSPUSXEE1001'];
+
+        var paymentCode = payload.data.paymentCode;
+        var requestType = payload.data.requestType;
+
+        var blacklistedPaymentCodes = [
+          'PMCUSZZ110131101','PMCUSZZ110131100',
+          'PMCUSZZ110131043','PMCUSZZ110131042'
+        ];
+
+        var blacklistedRequestTypes = ['CLEARANCE'];
+
+        var state = payload.data.currentState;
+
+        var allowedStates = [
+          'PAYMENT_DECLINED',
+          'PAYMENT_REQUEST_DECLINED',
+          'PAYMENT_FAILED'
+        ];
+
+        if (
+          (resourceProductId !== null && resourceProductId !== undefined) &&
+          (allowedResourceProductIds.indexOf(resourceProductId) > -1) &&
+          (blacklistedPaymentCodes.indexOf(paymentCode) < 0) &&
+          (blacklistedRequestTypes.indexOf(requestType) < 0) &&
+          (allowedStates.indexOf(state) > -1)
+        ) {
+          return JSON.stringify(payload.data);
+        }
+
+        return '';
+      }
+
+  config:
+    lag.threshold: '2000'
+    subscriber: photon-orcus
+    trace.enable: 'true'
+    webhook.auth.crux.app: orcus-interceptor
+    webhook.auth.crux.cluster: photonorcus
+
+  contactInfo:
+    cluster: photonorcus
+
+  filters:
+    - EVENT_NAME:
+        - type: REGEX
+          value: RESOURCE_PAYMENT_CREATED
+        - type: REGEX
+          value: RESOURCE_PAYMENT_UPDATED
+
+  webhookRequest: "{ 'method': 'POST', 'url': 'https://photonorcus.zone.olympus.infra/orcus-interceptor/api/v1/tenants/600001/domain-event-types/switch-authorization/evaluate-bot', 'postData': { 'mimeType': 'application/json', 'text': '<% print(generateRequestBody(payload.data)); %>' } }"
