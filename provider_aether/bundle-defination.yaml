@@ -1,11 +1,11 @@
 apiVersion: rrsd.zetaapps.in/v1alpha1
 kind: Configuration
 metadata:
-  name: bankxyz.aether.configuration.product.prdus001001.default.bundle-definition
+  name: bankxyz.aether.configuration.product.prdin001001.default.bundle-definition
 
 spec:
   metadata:
-    id: aether.configuration.product.prdus001001.default.bundle-definition
+    id: aether.configuration.product.prdin001001.default.bundle-definition
     name: bankxyz Bundle 1001
     description: bankxyz Bundle 1001
     tenantId: '600001'
@@ -21,7 +21,7 @@ spec:
     value:
       name: bankxyz Bundle 1001
       code: BUNINXYZ1001
-      description: Bundle consists of subprime credit account, payment account, credit card and emerald loan product.
+      description: Bundle consists credit account, payment account, credit card and emerald loan product.
       picURL: https://card-program-files.s3.amazonaws.com/partnergiftcard.png
 
       activationPolicy: false

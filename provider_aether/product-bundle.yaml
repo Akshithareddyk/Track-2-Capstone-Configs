@@ -2,11 +2,11 @@ apiVersion: rrsd.zetaapps.in/v1alpha1
 kind: Configuration
 
 metadata:
-  name: bankxyz.elenchos.configuration.product.prdus001001.default.product
+  name: bankxyz.elenchos.configuration.product.prdin001001.default.product
 
 spec:
   metadata:
-    id: elenchos.configuration.product.prdus001001.default.product
+    id: elenchos.configuration.product.prdin001001.default.product
     name: bankxyz Product 1001
     description: bankxyz Product 1001
     tenantId: '600001'
@@ -21,9 +21,9 @@ spec:
 
     value:
       name: bankxyz Product 1001
-      code: PRDUSXEE1001
+      code: PRDINXYZ1001
       codeSuffix: '1001'
-      description: bankxyz Subprime Credit Card Product
+      description: bankxyz  Credit Card Product
 
       imageUrl: https://card-program-files.s3.amazonaws.com/optimawebviews-bucket/Starbucks_1.jpg
       status: active
