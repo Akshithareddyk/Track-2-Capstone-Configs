@@ -2,13 +2,13 @@ apiVersion: rrsd.zetaapps.in/v1alpha1
 kind: Configuration
 
 metadata:
-  name: bankxyz.acropolis.configuration.product.prdus001001.53401687-02.card-sku
+  name: bankxyz.acropolis.configuration.product.prdin001001.53401687-02.card-sku
 
 spec:
   metadata:
-    id: acropolis.configuration.product.prdus001001.53401687-02.card-sku
-    name: Card SKU For bankxyz Bin 53401687 Range 02
-    description: Card SKU For bankxyz Bin 53401687 Range 02
+    id: acropolis.configuration.product.prdin001001.53401687-02.card-sku
+    name: Card SKU For bankxyz Bin 601150 Range 23
+    description: Card SKU For bankxyz Bin 601150 Range 23
     tenantId: '600001'
     tenantCode: bankxyz
 
