@@ -1,7 +1,7 @@
 apiVersion: rrsd.zetaapps.in/v1alpha1
 kind: RubyInterestTermResolutionPolicy
 metadata:
-  name: lsg.ruby.interesttermresolutionpolicy.3001
+  name: bankxyz.ruby.interesttermresolutionpolicy.3001
 spec:
   code: TRPUS003001
   description: Interest term resolution policy
@@ -12,8 +12,8 @@ spec:
     requester:
       module: ruby-module-e2e
       moduleVersion: 0.0.1
-    tenantCode: lsg
-    tenantId: '600309'
+    tenantCode: bankxyz
+    tenantId: '600001'
   configs:
     - selectionCriteria:
         accountStatus:
@@ -73,6 +73,6 @@ spec:
             - GENERAL
             - BALANCE_TRANSFER
   name: interest term resolution policy
-  templateCode: us-credit
-  validFrom: '2000-01-01T23:09:01.795+07:00'
-  validTill: '2999-01-01T23:09:01.795+07:00'
+  templateCode: in-credit
+  validFrom: '2025-07-25T23:09:01.795Z'
+  validTill: '2099-07-25T23:09:01.795Z'

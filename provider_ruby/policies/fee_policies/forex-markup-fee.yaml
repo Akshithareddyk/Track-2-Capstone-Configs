@@ -10,7 +10,7 @@ spec:
     requester:
       module: ruby-module-e2e
       moduleVersion: 0.0.1
-    tenantId: '600326'
+    tenantId: '600001'
     tenantCode: bankxyz
   name: Forex Markup Fee Policy
   code: FCFUSXEE1001
@@ -39,4 +39,4 @@ spec:
         percentage: 1.5
   validFrom: '2025-07-25T23:09:01.795Z'
   validTill: '2099-07-25T23:09:01.795Z'
-  templateCode: us-credit
+  templateCode: in-credit

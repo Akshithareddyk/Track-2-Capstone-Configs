@@ -9,7 +9,7 @@ spec:
     id: ruby.configuration.module.general-1001.interest-program
     name: bankxyz General Interest Program
     description: bankxyz Subprime Interest Program
-    tenantId: '600326'
+    tenantId: '600001'
     tenantCode: bankxyz
 
   config:
@@ -30,8 +30,8 @@ spec:
       rateType: VARIABLE
       precedenceCode: '900'
 
-      validFrom: '2023-01-01T00:00:00.000-07:00'
-      validUntil: '2999-01-01T00:00:00.000-07:00'
+      validFrom: '2025-07-25T23:09:01.795Z'
+      validTill: '2099-07-25T23:09:01.795Z'
 
       interestRules:
 

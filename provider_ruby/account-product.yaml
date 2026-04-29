@@ -8,8 +8,8 @@ spec:
   metadata:
     id: ruby.configuration.product.prdus001001.default.account-product
     name: bankxyz Account Product 1001
-    description: bankxyz Subprime Account Product
-    tenantId: '600326'
+    description: bankxyz Account Product
+    tenantId: '600001'
     tenantCode: bankxyz
 
   config:
@@ -24,7 +24,7 @@ spec:
       code: RAPINXYZ1001
       coaCode: COAUSXEE1001
       accountProductFamilyCode: APFINXYZ1001
-      description: bankxyz Subprime Credit Account Product
+      description: bankxyz Credit Account Product
 
       policies:
 

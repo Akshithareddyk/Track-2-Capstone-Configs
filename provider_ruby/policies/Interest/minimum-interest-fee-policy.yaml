@@ -24,7 +24,7 @@ spec:
     fixedAmount:
       baseFee: 89
 
-  validFrom: '2023-01-01T00:00:00.000-07:00'
-  validTill: '2099-12-31T00:00:00.000-07:00'
+  validFrom: '2025-07-25T23:09:01.795Z'
+  validTill: '2099-07-25T23:09:01.795Z'
 
   templateCode: in-credit
