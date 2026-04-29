@@ -2,11 +2,11 @@ apiVersion: rrsd.zetaapps.in/v1alpha1
 kind: Configuration
 
 metadata:
-  name: bankxyz.acropolis.configuration.product.prdus001001.601150-23.card-product
+  name: bankxyz.acropolis.configuration.product.prdin001001.601150-23.card-product
 
 spec:
   metadata:
-    id: acropolis.configuration.product.prdus001001.601150-23.card-product
+    id: acropolis.configuration.product.prdin001001.601150-23.card-product
     name: bankxyz Card Product For Bin 601150 Range 23
     description: bankxyz Card Product For Bin 601150 Range 23
     tenantId: '600001'
